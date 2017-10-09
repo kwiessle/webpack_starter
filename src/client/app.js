@@ -1,10 +1,13 @@
+
 import React from 'react';
 import ReactDOM from 'react-dom';
-let zdp = "ZDP ZDP";
 import MainCSS from './stylesheets/main.scss';
+import io from 'socket.io-client';
+const Socket = io.connect(window.location.host, {reconnect: true});
 
-console.log('Hello World');
-console.log('Webpack ' + zdp);
+Socket.emit('connected', {message: '[SOCKETS] -- socket.io Connected'});
+
+
 
 class Hello extends React.Component {
   render () {

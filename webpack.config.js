@@ -54,7 +54,7 @@ let config = {
   },
   plugins: [
     new ExtractTextPlugin({
-      filename: 'main.css',
+      filename: 'stylesheets/main.css',
       disable: dev
     })
   ]

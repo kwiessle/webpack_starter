@@ -1,11 +1,10 @@
 {
   "presets": [
+    "react",
     ["env", {
-        "modules": false,
-        "targets": {
-        "browsers": ["last 2 versions", "safari >= 7", "ie >= 7"]
+      "targets": {
+        "browsers": ["last 2 versions", "safari >= 7"]
       }
     }]
-  ],
-  "plugins": ["syntax-dynamic-import"]
+  ]
 }
