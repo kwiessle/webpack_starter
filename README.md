@@ -20,7 +20,7 @@ ECMAScript 6 (ES6) syntax supported.
 
 Run this commands on separate terminals windows. 
 
-> npm run client-dev
+`npm run client-dev`
 
 `npm run server-dev`
 
