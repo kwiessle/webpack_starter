@@ -1,10 +1,12 @@
-const http = require('http');
-const path = require('path');
-const port = process.env.PORT || 9000;
+import http from 'http';
+import path from 'path';
+import express from 'express';
+const app = express();
+import config from '../../config.js';
 
-var express = require('express');
-var app = express();
 
+
+// ----------- [  EXPRESS  ] --------------//
 
 app.use(express.static('public'));
 
@@ -12,15 +14,28 @@ app.get('*', (req, res) => {
   res.sendFile(path.resolve('public') + '/index.html');
 });
 
+
+
+
+// ----------- [  SERVER  ] --------------//
+
 var SERVER = http.createServer(app, (req, res) => {
   res.writeHead(200);
-}).listen(port);
+}).listen(config.PORT);
 
-const io = require('socket.io').listen(SERVER.listen(port));
+
+
+
+
+// ----------- [  SOCKETS  ] --------------//
+
+const io = require('socket.io').listen(SERVER.listen(config.PORT));
 io.on('connection', (socket) => {
   socket.on('connected', (data) => {
-    console.log(data.message);
+    console.log(data.status);
   })
-})
+});
 
-console.log('[BACKEND] -- Listening from PORT : %d', port);
+
+
+console.log('[BACKEND] -- Listening from PORT : %d', config.PORT);

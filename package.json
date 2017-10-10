@@ -6,7 +6,7 @@
   "scripts": {
     "prod": "webpack",
     "dev": "NODE_ENV=dev webpack",
-    "master": "nodemon -e html,js ./src/server/server.js",
+    "master": "nodemon -e html,js ./babelRegister.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -36,6 +36,7 @@
     "webpack": "^3.6.0"
   },
   "dependencies": {
+    "babel-register": "^6.26.0",
     "express": "^4.16.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",

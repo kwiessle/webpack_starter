@@ -4700,7 +4700,7 @@ var Socket = _socket2.default.connect(window.location.host, { reconnect: true })
 // const Redux = require('redux');
 
 // import Redux from 'redux';
-Socket.emit('connected', { message: '[SOCKETS] -- socket.io Connected' });
+Socket.emit('connected', { status: '[SOCKETS] -- socket.io Connected' });
 
 var initialState = [{
   id: 0,
@@ -24996,7 +24996,7 @@ module.exports = function() {
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(100);
+var content = __webpack_require__(60);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -25021,7 +25021,20 @@ if(false) {
 }
 
 /***/ }),
-/* 60 */,
+/* 60 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(61)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "body, html {\n  margin: 0;\n  padding: 0;\n  background: #edf1f4;\n  text-align: center;\n  font-family: 'Arial';\n  font-weight: 100; }\n\nh1 {\n  color: #131313;\n  font-size: 40px;\n  margin-top: 100px; }\n", ""]);
+
+// exports
+
+
+/***/ }),
 /* 61 */
 /***/ (function(module, exports) {
 
@@ -29242,20 +29255,6 @@ function applyMiddleware() {
     };
   };
 }
-
-/***/ }),
-/* 100 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(61)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, "body, html {\n  margin: 0;\n  padding: 0;\n  background: #edf1f4;\n  text-align: center;\n  font-family: 'Arial';\n  font-weight: 100; }\n\nh1 {\n  color: #131313;\n  font-size: 40px;\n  margin-top: 100px; }\n", ""]);
-
-// exports
-
 
 /***/ })
 /******/ ]);

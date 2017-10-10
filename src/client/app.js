@@ -8,7 +8,7 @@ import { createStore, applyMiddleware, combineReducers, compose } from 'redux'
 const Socket = io.connect(window.location.host, {reconnect: true});
 // const Redux = require('redux');
 
-Socket.emit('connected', {message: '[SOCKETS] -- socket.io Connected'});
+Socket.emit('connected', {status: '[SOCKETS] -- socket.io Connected'});
 
 const initialState = [
     {
