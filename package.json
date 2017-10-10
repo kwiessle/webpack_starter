@@ -4,9 +4,9 @@
   "description": "Webpack boilerplate ",
   "main": "server.js",
   "scripts": {
-    "prod": "webpack",
-    "dev": "NODE_ENV=dev webpack",
-    "master": "nodemon -e html,js ./babelRegister.js",
+    "master": "webpack",
+    "client-dev": "NODE_ENV=dev webpack",
+    "server-dev": "nodemon -e html,js ./main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

@@ -4697,9 +4697,7 @@ var _redux = __webpack_require__(85);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Socket = _socket2.default.connect(window.location.host, { reconnect: true });
-// const Redux = require('redux');
 
-// import Redux from 'redux';
 Socket.emit('connected', { status: '[SOCKETS] -- socket.io Connected' });
 
 var initialState = [{

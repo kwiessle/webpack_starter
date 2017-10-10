@@ -3,10 +3,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import MainCSS from './stylesheets/main.scss';
 import io from 'socket.io-client';
-// import Redux from 'redux';
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux'
 const Socket = io.connect(window.location.host, {reconnect: true});
-// const Redux = require('redux');
 
 Socket.emit('connected', {status: '[SOCKETS] -- socket.io Connected'});
 
