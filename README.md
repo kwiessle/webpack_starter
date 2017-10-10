@@ -26,6 +26,6 @@ Run this commands on separate terminals windows.
 
 ### master
 
-Compile and minimify final client assets.
+Compile and minimify final client assets in `./public`
 
 `npm run master`
