@@ -25,6 +25,7 @@ let cssLoaders = [{
 let config = {
   entry: './src/client/app.js',
   watch: dev,
+  devtool: dev ? 'cheap-module-eval-source-map' : 'source-map',
   output: {
     path: path.resolve('public') + '/assets',
     filename: 'bundle.js'
@@ -60,6 +61,8 @@ let config = {
   ]
 }
 if (!dev) {
-  config.plugins.push(new UglifyJSPlugin());
+  config.plugins.push(new UglifyJSPlugin({
+    sourceMap: true
+  }));
 }
 module.exports = config;

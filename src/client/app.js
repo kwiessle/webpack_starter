@@ -8,6 +8,7 @@ const Socket = io.connect(window.location.host, {reconnect: true});
 
 Socket.emit('connected', {status: '[SOCKETS] -- socket.io Connected'});
 
+
 const initialState = [
     {
       id: 0,
@@ -22,7 +23,6 @@ const initialState = [
 ];
 
 const productState = (state = initialState, action) => {
-    console.log(action);
     if (action.type == 'ADD_TO_CART') {
         state[action.index].quantity += 1
         return (state);
@@ -41,7 +41,7 @@ const Product = (props) => {
     return (
       <div>
       <h2>{props.name}</h2>
-      <p>Quantity: {props.quantity}</p>
+      <p>Quantity:  {props.quantity}</p>
       <button onClick={() => store.dispatch({
           type: 'ADD_TO_CART',
           index: props.id
@@ -69,6 +69,7 @@ const App = () => {
           store.getState().productState.map((product) => {
             return (
               <Product
+                key={Math.random()}
                 name={product.name}
                 quantity={product.quantity}
                 id={product.id}
@@ -80,6 +81,7 @@ const App = () => {
     )
 }
 
+console.log('Hello World');
 const Render = () => {
     ReactDOM.render(<App />, document.getElementById('main'));
 }
