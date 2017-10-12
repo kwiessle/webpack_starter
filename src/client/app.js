@@ -6,6 +6,8 @@ import io from 'socket.io-client';
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux'
 const Socket = io.connect(window.location.host, {reconnect: true});
 
+console.log(process.env.NODE_ENV);
+
 Socket.emit('connected', {status: '[SOCKETS] -- socket.io Connected'});
 
 

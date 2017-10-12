@@ -1,7 +1,21 @@
+// ----------- [  VARIABLES ] --------------//
+
+
 const path = require('path');
-const dev = process.env.NODE_ENV === 'dev'
+const dev = process.env.NODE_ENV === 'dev';
+
+
+// ----------- [  PLUGINS  ] --------------//
+
+
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const ManifestPlugin = require('webpack-manifest-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+
+
+// ----------- [  FUNCTIONS  ] --------------//
+
 
 let cssLoaders = [{
     loader: 'css-loader',
@@ -22,13 +36,17 @@ let cssLoaders = [{
   }
 ];
 
+
+// ----------- [  CONFIG  ] --------------//
+
+
 let config = {
   entry: './src/client/app.js',
   watch: dev,
   devtool: dev ? 'cheap-module-eval-source-map' : 'source-map',
   output: {
-    path: path.resolve('public') + '/assets',
-    filename: 'bundle.js'
+    path: path.resolve('public'),
+    filename:  dev ? 'js/bundle.js' : 'js/bundle.[chunkhash:4].js'
   },
   module: {
     rules: [
@@ -55,14 +73,25 @@ let config = {
   },
   plugins: [
     new ExtractTextPlugin({
-      filename: 'stylesheets/main.css',
-      disable: dev
-    })
+      filename: dev ? 'stylesheets/main.css' : 'stylesheets/main.[contenthash:4].css',
+    }),
+    new CleanWebpackPlugin(
+      ['stylesheets', 'js'], {
+          root: path.resolve('public'),
+          verbose: true,
+          dry: false,
+          exclude: ['']
+      }
+    )
   ]
 }
+
+
+// ----------- [  NODE_ENV  ] --------------//
+
+
 if (!dev) {
-  config.plugins.push(new UglifyJSPlugin({
-    sourceMap: true
-  }));
+  config.plugins.push(new UglifyJSPlugin({sourceMap: true}));
+  config.plugins.push(new ManifestPlugin());
 }
 module.exports = config;

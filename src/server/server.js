@@ -1,17 +1,40 @@
 import http from 'http';
 import path from 'path';
 import express from 'express';
-const app = express();
+import mustache from 'mustache-express';
 import config from '../../config.js';
+import manifestJSON from '../../public/manifest.json';
 
+
+const app = express();
+const dev = process.env.NODE_ENV  === 'dev';
+
+
+console.log(dev);
 
 
 // ----------- [  EXPRESS  ] --------------//
 
+app.engine('html', mustache());
+app.set('views', __dirname + '/views/');
+app.set('view engine', 'html');
+
 app.use(express.static('public'));
 
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve('public') + '/index.html');
+
+if (!dev) {
+  res.render('index', {
+    css: manifestJSON['main.css'],
+    js: manifestJSON['main.js']
+  })
+} else {
+  res.render('index', {
+    css: '/js/bundle.js',
+    js: '/stylesheets/main.css'
+  })
+}
+
 });
 
 
