@@ -18,7 +18,7 @@ ECMAScript 6 (ES6) syntax supported.
 
 ### development
 
-Run this commands on separate terminals windows. 
+Run this commands on separate terminals windows.
 
 `npm run client-dev`
 
@@ -26,6 +26,10 @@ Run this commands on separate terminals windows.
 
 ### master
 
-Compile and minimify final client assets in `./public`
+1) Compile and minimify final client assets in `./public`
 
-`npm run master`
+`npm run client-master`
+
+2) To get a preview of your compiled app please launch the backend server with the following commands
+
+`npm run server-master`
