@@ -1,12 +1,14 @@
-
+// ----------- [  DEPENDENCIES  ] --------------//
 import React from 'react';
 import ReactDOM from 'react-dom';
-import MainCSS from './stylesheets/main.scss';
 import io from 'socket.io-client';
-import { createStore, applyMiddleware, combineReducers, compose } from 'redux'
+import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
+// ----------- [  FILES  ] --------------//
+import MainCSS from './stylesheets/main.scss';
+// ----------- [  VARIABLES  ] --------------//
 const Socket = io.connect(window.location.host, {reconnect: true});
 
-console.log(process.env.NODE_ENV);
+
 
 Socket.emit('connected', {status: '[SOCKETS] -- socket.io Connected'});
 
@@ -62,7 +64,7 @@ const Header = () => {
     </div>
   )
 }
-
+console.log('HEllo');
 const App = () => {
     return (
       <div>
@@ -83,7 +85,7 @@ const App = () => {
     )
 }
 
-console.log('Hello World');
+
 const Render = () => {
     ReactDOM.render(<App />, document.getElementById('main'));
 }

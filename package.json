@@ -4,9 +4,10 @@
   "description": "Webpack boilerplate ",
   "main": "server.js",
   "scripts": {
-    "master": "webpack",
-    "client-dev": "NODE_ENV=dev webpack",
-    "server-dev": "nodemon -e html,js ./main.js",
+    "client-master": "webpack",
+    "server-master": "nodemon -e html,js ./main.js",
+    "client-dev": "NODE_ENV=development webpack",
+    "server-dev": "NODE_ENV=development nodemon -e html,js ./main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

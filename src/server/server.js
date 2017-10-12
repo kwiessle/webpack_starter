@@ -7,10 +7,10 @@ import manifestJSON from '../../public/manifest.json';
 
 
 const app = express();
-const dev = process.env.NODE_ENV  === 'dev';
+const dev = process.env.NODE_ENV === 'development';
 
 
-console.log(dev);
+
 
 
 // ----------- [  EXPRESS  ] --------------//
@@ -23,17 +23,10 @@ app.use(express.static('public'));
 
 app.get('*', (req, res) => {
 
-if (!dev) {
-  res.render('index', {
-    css: manifestJSON['main.css'],
-    js: manifestJSON['main.js']
-  })
-} else {
-  res.render('index', {
-    css: '/js/bundle.js',
-    js: '/stylesheets/main.css'
-  })
-}
+res.render('index', {
+    appJS: manifestJSON['main.js'],
+    appCSS: manifestJSON['main.css']
+})
 
 });
 
@@ -60,5 +53,12 @@ io.on('connection', (socket) => {
 });
 
 
+// ----------- [  STATUS  ] --------------//
+
 
 console.log('[BACKEND] -- Listening from PORT : %d', config.PORT);
+if (dev) {
+  console.log('[DEVMODE] -- NODE_ENV = true');
+} else {
+  console.log('[DEVMODE] -- NODE_ENV = false');
+}

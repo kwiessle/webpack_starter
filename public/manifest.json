@@ -1,6 +1,4 @@
 {
-  "main.css": "stylesheets/main.8d8c.css",
-  "main.css.map": "stylesheets/main.8d8c.css.map",
-  "main.js": "js/bundle.b471.js",
-  "main.js.map": "js/bundle.b471.js.map"
+  "main.css": "stylesheets/main.css",
+  "main.js": "js/bundle.js"
 }

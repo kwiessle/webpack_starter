@@ -2,7 +2,8 @@
 
 
 const path = require('path');
-const dev = process.env.NODE_ENV === 'dev';
+const dev = process.env.NODE_ENV === 'development';
+console.log(dev);
 
 
 // ----------- [  PLUGINS  ] --------------//
@@ -15,7 +16,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 
 // ----------- [  FUNCTIONS  ] --------------//
-
+console.log('DEV -> %s',dev);
 
 let cssLoaders = [{
     loader: 'css-loader',
@@ -46,7 +47,7 @@ let config = {
   devtool: dev ? 'cheap-module-eval-source-map' : 'source-map',
   output: {
     path: path.resolve('public'),
-    filename:  dev ? 'js/bundle.js' : 'js/bundle.[chunkhash:4].js'
+    filename:  dev ? 'js/bundle.js' : 'js/bundle.[hash:4].js'
   },
   module: {
     rules: [
@@ -82,7 +83,8 @@ let config = {
           dry: false,
           exclude: ['']
       }
-    )
+    ),
+    new ManifestPlugin()
   ]
 }
 
@@ -92,6 +94,5 @@ let config = {
 
 if (!dev) {
   config.plugins.push(new UglifyJSPlugin({sourceMap: true}));
-  config.plugins.push(new ManifestPlugin());
 }
 module.exports = config;
